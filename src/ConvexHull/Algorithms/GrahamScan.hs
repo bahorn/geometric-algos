@@ -2,16 +2,10 @@ module ConvexHull.Algorithms.GrahamScan (grahamScan, findP0) where
 
 import Data.List (nub, sortOn)
 
+import Trig.Polar
 import ConvexHull.Common
 
 type Stack = [Point]
-
--- | atan2 requires floats :(
-polarAngle :: Point -> PointType
-polarAngle (x, y) = atan2 y x
-
-polarAngleFrom :: Point -> Point -> PointType
-polarAngleFrom (x1, y1) (x2, y2) = polarAngle (x2-x1, y2-y1)
 
 ccw :: Point -> Point -> Point -> CCW
 ccw (x1, y1) (x2, y2) (x3, y3)

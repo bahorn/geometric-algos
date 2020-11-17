@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: bb757a929cb80f8164616deedf58f05ba989d420e99d1bda38977efdcaeeef2e
+-- hash: 74190b28c06951c0848b5200648df9b82ccb24f1e95ce85dfd4e5daf49fcf99b
 
 name:           hs-convexhull
 version:        0.1.0.0
@@ -28,11 +28,14 @@ source-repository head
 library
   exposed-modules:
       ConvexHull.Algorithms.GrahamScan
+      ConvexHull.Algorithms.QuickHull
       ConvexHull.Common
       ConvexHull.ConvexHull
       Display.ConvexHull
       Display.Display
       MiscUtils.Generation
+      Trig.Contains
+      Trig.Polar
   other-modules:
       Paths_hs_convexhull
   hs-source-dirs:

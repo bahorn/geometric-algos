@@ -13,7 +13,7 @@ randomPoint = do
     y <- randomPointType
     return (x, y)
 
-randomInput :: IO Points
-randomInput = do
-    count <- randomRIO (5, 100) :: IO Int
+randomInput :: Int -> Int -> IO Points
+randomInput start end = do
+    count <- randomRIO (start, end) :: IO Int
     mapM (const randomPoint) [1..count]
