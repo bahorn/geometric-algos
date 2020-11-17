@@ -1,9 +1,8 @@
 module ConvexHull.Algorithms.QuickHull (quickHull) where
 
-import Debug.Trace
 import Data.List (sortOn)
 
-import Trig.Polar
+import Trig.Polar (sortHull)
 import Trig.Contains (inTriangle, segment, SegmentPosition (Above, Below, On))
 import ConvexHull.Common
 
@@ -12,12 +11,6 @@ minX = minimum
 
 maxX :: Points -> Point
 maxX = maximum
-
-avgX :: Points -> PointType
-avgX p = sum (map fst p) / fromIntegral (length p)
-
-avgY :: Points -> PointType
-avgY p = sum (map snd p) / fromIntegral (length p)
 
 mid :: PointType -> PointType -> PointType
 mid a b = a + (b - a) / 2
@@ -50,7 +43,7 @@ maxDistance points p1 p2 =
 
 findHull :: Points -> Point -> Point -> Points
 findHull [] _ _ = []
-findHull s a b = trace (show s ++ show a ++ show b)
+findHull s a b =
     m : findHull left a m ++ findHull right m b
     where m = maxDistance s a b
           -- Remove points which can't be in the hull
@@ -61,8 +54,7 @@ findHull s a b = trace (show s ++ show a ++ show b)
 
 quickHull :: Points -> ConvexHull
 quickHull p =
-    sortOn (polarAngleFrom (avgX p, avgY p))
-        $ a : b : findHull left a b ++ findHull right b a
+    sortHull $ a : b : findHull left a b ++ findHull right b a
     where a = minX p
           b = maxX p
           (left, right) = segmented a b $ filter (\x -> x /= a && x /= b) p

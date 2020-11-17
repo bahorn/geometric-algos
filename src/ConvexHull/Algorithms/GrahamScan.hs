@@ -42,4 +42,4 @@ grahamInit points = ([], sortAngle (findP0 points) points)
 
 -- |Compute the ConvexHull of a set of points using a Graham's Scan
 grahamScan :: Points -> ConvexHull
-grahamScan p = grahamLoop $ grahamInit (nub p)
+grahamScan p = sortHull (grahamLoop $ grahamInit (nub p))
