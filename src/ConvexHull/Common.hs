@@ -1,5 +1,6 @@
 module ConvexHull.Common where
 
+
 type PointType = Float
 
 -- (X, Y)
@@ -10,6 +11,3 @@ type Points = [Point]
 
 -- (Just to specify when we return a ConvexHull or not.)
 type ConvexHull = Points
-
-data CCW = Clockwise | CounterClockwise | Collinear
-    deriving (Eq, Show, Enum)

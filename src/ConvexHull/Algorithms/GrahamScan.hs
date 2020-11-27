@@ -2,17 +2,11 @@ module ConvexHull.Algorithms.GrahamScan (grahamScan, findP0) where
 
 import Data.List (nub, sortOn)
 
+import Trig.Contains (ccw, CCW (CounterClockwise))
 import Trig.Polar
 import ConvexHull.Common
 
 type Stack = [Point]
-
-ccw :: Point -> Point -> Point -> CCW
-ccw (x1, y1) (x2, y2) (x3, y3)
-  | res > 0 = CounterClockwise
-  | res < 0 = Clockwise
-  | res == 0 = Collinear
-  where res = ((x2 - x1) * (y3 - y1)) - ((y2 - y1) * (x3 - x1))
 
 -- |Finds the lowest y-coordinate and leftmost point.
 findP0 :: Points -> Point
