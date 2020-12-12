@@ -20,12 +20,10 @@ extra-source-files:
 description:         Please see the README on GitHub at <https://github.com/githubuser/hs-convexhull#readme>
 
 dependencies:
-  # - base >= 4.7 && < 5
+- base >= 4.7 && < 5
 - random == 1.1
 - Chart == 1.9.3
 - Chart-cairo == 1.9.3
-- liquid-base
-- liquidhaskell >= 0.8.10
 
 library:
   source-dirs: src
@@ -38,7 +36,6 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
-    - -fplugin=LiquidHaskell
     dependencies:
     - hs-convexhull
 
@@ -50,6 +47,5 @@ tests:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
-    - -fplugin=LiquidHaskell
     dependencies:
     - hs-convexhull
