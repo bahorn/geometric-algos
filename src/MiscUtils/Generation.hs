@@ -1,8 +1,10 @@
+{-# LANGUAGE NamedFieldPuns #-}
+
 module MiscUtils.Generation where
 
 import System.Random
 
-import ConvexHull.Common (Point (), Points (), PointType ())
+import ConvexHull.Common (Point (..), Points (), PointType ())
 
 randomPointType :: IO PointType
 randomPointType = randomIO :: IO PointType
@@ -11,7 +13,7 @@ randomPoint :: IO Point
 randomPoint = do
     x <- randomPointType
     y <- randomPointType
-    return (x, y)
+    return Point { x, y }
 
 randomInput :: Int -> Int -> IO Points
 randomInput start end = do

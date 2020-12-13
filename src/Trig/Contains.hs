@@ -1,6 +1,8 @@
+{-# LANGUAGE NamedFieldPuns #-}
+
 module Trig.Contains where
 
-import ConvexHull.Common (Point)
+import ConvexHull.Common (Point (..))
 
 data SegmentPosition = Above | Below | On
     deriving (Eq, Show, Enum)
@@ -20,14 +22,14 @@ inTriangle a b c p
 -- |Specify whenever this point is below or above the line between two other
 -- points.
 segment :: Point -> Point -> Point -> SegmentPosition
-segment (ax, ay) (bx, by) (x, y)
+segment Point { x = ax, y = ay } Point { x = bx, y = by } Point { x, y }
   | v > 0 = Above
   | v < 0 = Below
   | otherwise = On
   where v = (ax - x) * (by - y) - (bx - x) * (ay - y)
 
 ccw :: Point -> Point -> Point -> CCW
-ccw (x1, y1) (x2, y2) (x3, y3)
+ccw Point { x = x1, y = y1 } Point { x = x2, y = y2 } Point { x = x3, y = y3 }
   | res > 0 = CounterClockwise
   | res < 0 = Clockwise
   | res == 0 = Collinear

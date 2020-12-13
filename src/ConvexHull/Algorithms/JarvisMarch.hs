@@ -8,13 +8,13 @@ minX = minimum
 
 -- This finds an endpoint
 innerLoop :: Point -> Points -> Point -> Point
-innerLoop _ [] end = end 
+innerLoop _ [] end = end
 innerLoop ph (p : rest) end
-  | p == ph = innerLoop ph rest p
+  | p == ph                          = innerLoop ph rest p
   | CounterClockwise == ccw ph end p = innerLoop ph rest p
-  | otherwise = innerLoop ph rest end
+  | otherwise                        = innerLoop ph rest end
 
-jarvisLoop :: ConvexHull -> Points -> ConvexHull
+jarvisLoop :: Points -> Points -> Points
 jarvisLoop hull@(first : _) points@(p : _)
   | endpoint == first = hull
   | otherwise = jarvisLoop (hull ++ [endpoint]) points
@@ -23,4 +23,4 @@ jarvisLoop hull@(first : _) points@(p : _)
 jarvisMarch :: Points -> ConvexHull
 jarvisMarch p = do
     let pointOnHull = minX p
-    pointOnHull : jarvisLoop [pointOnHull] p
+    SimplePolygon $ pointOnHull : jarvisLoop [pointOnHull] p
