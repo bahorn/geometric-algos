@@ -5,13 +5,6 @@
 
 packages:
 - completed:
-    hackage: gloss-1.13.2.1@sha256:273d02d30e1896932d45424dab6022a16986c0ed3eef6937776b5f40854ce51c,4075
-    pantry-tree:
-      size: 3807
-      sha256: 1bcac9962bad9412bfb3c3a694fcdaae7097ee4071b03fc1dc5ab6047baad01b
-  original:
-    hackage: gloss-1.13.2.1
-- completed:
     hackage: gtk2hs-buildtools-0.13.8.0@sha256:132f38155fc677430a47ea750918973161c876fb6f281d342ac2f07eb99229ce,5238
     pantry-tree:
       size: 3588
