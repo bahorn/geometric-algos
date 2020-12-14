@@ -17,10 +17,4 @@ main = do
     let hull3 = jarvisMarch points
     print $ hull1 == hull2
     print hull3
-    Gloss.display
-      (Gloss.InWindow "Geometric Algorithms" (512, 512) (10, 10))
-      Gloss.white
-      (Gloss.pictures
-        [ Gloss.color (Gloss.greyN 0.7) . render $ hull1
-        , render points
-        ])
+    toScreen (Gloss.pictures [render hull1, render points])
