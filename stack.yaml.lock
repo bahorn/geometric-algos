@@ -5,26 +5,12 @@
 
 packages:
 - completed:
-    hackage: Chart-1.9.3@sha256:b2bf7f6fc3236164905b008a4c909448b4afe813264ca3a925b238cfe1ee42c7,2949
+    hackage: gloss-1.13.2.1@sha256:273d02d30e1896932d45424dab6022a16986c0ed3eef6937776b5f40854ce51c,4075
     pantry-tree:
-      size: 3031
-      sha256: e83ef0b071ccf18e1b8ba8a23569ceb767bcaac63849ed44f023d69db9f3ace7
+      size: 3807
+      sha256: 1bcac9962bad9412bfb3c3a694fcdaae7097ee4071b03fc1dc5ab6047baad01b
   original:
-    hackage: Chart-1.9.3@sha256:b2bf7f6fc3236164905b008a4c909448b4afe813264ca3a925b238cfe1ee42c7,2949
-- completed:
-    hackage: Chart-cairo-1.9.3@sha256:f484a7194ca08ed67f02aa626e2f8f4d1a9b50624e0d50e3ced62958f7481cca,925
-    pantry-tree:
-      size: 238
-      sha256: 585b99e27718747d3c9a46bf46625774a06d102f77bf9fe8384d278914068ec7
-  original:
-    hackage: Chart-cairo-1.9.3@sha256:f484a7194ca08ed67f02aa626e2f8f4d1a9b50624e0d50e3ced62958f7481cca,925
-- completed:
-    hackage: cairo-0.13.8.1@sha256:1938aaeb5d3504678d995774dfe870f6b66cbd43d336b692fa8779b23b2b67a9,4075
-    pantry-tree:
-      size: 2830
-      sha256: 8f6344da4c578a4dd3a49c333e2158b695bfae32a74d34a76bbc6e531b70c95c
-  original:
-    hackage: cairo-0.13.8.1@sha256:1938aaeb5d3504678d995774dfe870f6b66cbd43d336b692fa8779b23b2b67a9,4075
+    hackage: gloss-1.13.2.1
 - completed:
     hackage: gtk2hs-buildtools-0.13.8.0@sha256:132f38155fc677430a47ea750918973161c876fb6f281d342ac2f07eb99229ce,5238
     pantry-tree:
