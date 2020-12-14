@@ -1,16 +1,20 @@
+{-# LANGUAGE NamedFieldPuns #-}
+
 module Display.ConvexHull where
 
-import qualified Graphics.Rendering.Chart.Easy as C
-import qualified Graphics.Rendering.Chart.Backend.Cairo as C
+import qualified Graphics.Gloss as Gloss
 
-import ConvexHull.Common (Points (), ConvexHull ())
+import ConvexHull.Common (Point (..), SimplePolygon (..))
+import Display.Display
 
-plotHull :: String -> Points -> ConvexHull -> IO ()
-plotHull fname points hull = do
-    let def = C.def
-    C.toFile def fname $ do
-        C.layout_title C..= "Hull Plot"
-        -- C.layout_x_axis . C.laxis_generate C..= C.scaledAxis C.def (-0.25, 1.25)
-        -- C.layout_y_axis . C.laxis_generate C..= C.scaledAxis C.def (-0.25, 1.25)
-        C.plot $ C.points "" points
-        C.plot $ C.line "" [hull]
+instance Display Point where
+  render Point { x, y } =
+    Gloss.color Gloss.black
+      . Gloss.translate (100 * x) (100 * y)
+      $ Gloss.circleSolid 0.5
+
+instance Display SimplePolygon where
+  render SimplePolygon { points } =
+    Gloss.color (Gloss.greyN 0.7)
+      . Gloss.polygon
+      $ map (\Point { x, y } -> (100 * x, 100 * y)) points

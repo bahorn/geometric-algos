@@ -1,10 +1,12 @@
 module Main where
 
 import MiscUtils.Generation (randomInput)
+import Display.Display
 import Display.ConvexHull
 import ConvexHull.Algorithms.QuickHull
-import ConvexHull.Algorithms.GrahamScan 
+import ConvexHull.Algorithms.GrahamScan
 import ConvexHull.Algorithms.JarvisMarch
+import qualified Graphics.Gloss as Gloss
 
 main :: IO ()
 main = do
@@ -15,4 +17,4 @@ main = do
     let hull3 = jarvisMarch points
     print $ hull1 == hull2
     print hull3
-    plotHull "test.png" points (hull3)-- ++ [head hull3])
+    toScreen (Gloss.pictures [render hull1, render points])

@@ -1,20 +1,30 @@
+{-# LANGUAGE NamedFieldPuns #-}
+
 module Trig.Polar where
 
 import Data.List (sortOn)
-import ConvexHull.Common (Point, Points, PointType, ConvexHull)
+import ConvexHull.Common
+  ( Point (..)
+  , Points
+  , PointType
+  , ConvexHull
+  , SimplePolygon (..)
+  )
 
 -- | atan2 requires floats :(
 polarAngle :: Point -> PointType
-polarAngle (x, y) = atan2 y x
+polarAngle Point { x, y } = atan2 y x
 
 polarAngleFrom :: Point -> Point -> PointType
-polarAngleFrom (x1, y1) (x2, y2) = polarAngle (x2-x1, y2-y1)
+polarAngleFrom Point { x = x1, y = y1 } Point { x = x2, y = y2 } =
+  polarAngle Point { x = x2-x1, y = y2-y1 }
 
 avgX :: Points -> PointType
-avgX p = sum (map fst p) / fromIntegral (length p)
+avgX p = sum (map x p) / fromIntegral (length p)
 
 avgY :: Points -> PointType
-avgY p = sum (map snd p) / fromIntegral (length p)
+avgY p = sum (map y p) / fromIntegral (length p)
 
 sortHull :: ConvexHull -> ConvexHull
-sortHull p = sortOn (polarAngleFrom (avgX p, avgY p)) p
+sortHull (SimplePolygon p) = SimplePolygon $
+  sortOn (polarAngleFrom Point { x = avgX p, y = avgY p }) p
